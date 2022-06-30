@@ -17,7 +17,7 @@ var checkPallindrome = (str, start, end)=>{
   return false
 }
 
-console.log(checkPallindrome('abab'))
+console.log(checkPallindrome('abab')) //true
 
 
 // Reverse Words in String
@@ -41,4 +41,29 @@ var arr = str.split(' ');
   
 }
 
-console.log(reverseWordsInString('I like very much'));
+console.log(reverseWordsInString('I like very much')); //"much very like I"
+
+var reverseLettersofWordsInString = (str, start, end)=>{
+ var arr = str.split(' ');
+ 
+ if(start > end){
+  return false;
+ }
+ for(var i=0; i<arr.length; i++){
+    if(arr[i].length >1){
+       arr[i] = reverseThis(arr[i])
+    }
+ }
+ 
+ return arr.join(' ');
+}
+
+function reverseThis(str, newString='', end=str.length-1){
+  var endString = str.substr(end, 1);
+  if(end === -1) return newString;
+  newString += endString;
+  return reverseThis(str, newString, end-1);
+}
+
+
+console.log(reverseLettersofWordsInString('I like this very much')) //"I ekil siht yrev hcum"
