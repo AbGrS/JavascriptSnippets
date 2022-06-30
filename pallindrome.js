@@ -67,3 +67,25 @@ function reverseThis(str, newString='', end=str.length-1){
 
 
 console.log(reverseLettersofWordsInString('I like this very much')) //"I ekil siht yrev hcum"
+
+
+//Binary Search
+
+function binarySearch(arr, searchTarget, firstIndex=-1, start=0, end=arr.length-1){
+  if(start>end){
+  	return firstIndex
+  }
+  const mid = parseInt((start+ end)/2);
+  if(searchTarget === arr[mid]){
+    return binarySearch(arr, searchTarget, mid, start, mid-1)
+  }
+  if(searchTarget< arr[mid]){
+    return binarySearch(arr, searchTarget,null,  start, mid-1)
+  }else{
+      return binarySearch(arr, searchTarget,null, mid+1, end)
+  }
+  
+  return firstIndex;
+}
+
+console.log(binarySearch([1,1,1,2,5,8,10,15], 15))
