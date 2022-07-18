@@ -89,3 +89,24 @@ function binarySearch(arr, searchTarget, firstIndex=-1, start=0, end=arr.length-
 }
 
 console.log(binarySearch([1,1,1,2,5,8,10,15], 15))
+
+//Find first missing first Positive number
+
+var firstMissingPositive = function(nums) {
+var hashMap = {};
+    var max = 1;
+    for(var i=0; i<nums.length; i++){
+        if(nums[i]> 0){
+            hashMap[nums[i]] = true;
+        }
+        max = max < nums[i] ? nums[i] : max;
+    }
+    
+    for(var i=1; i<=max+1; i++){
+        if(!hashMap[i]) return i;
+    }
+    
+    return max;
+};
+
+console.log(firstMissingPositive([1,2,3,4,5,6,7,8,9,10,11,12,23,20])) //13
