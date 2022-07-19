@@ -110,3 +110,21 @@ var hashMap = {};
 };
 
 console.log(firstMissingPositive([1,2,3,4,5,6,7,8,9,10,11,12,23,20])) //13
+
+// Sliding Window Problem
+const slidingWindow= (arr, n)=>{
+var sum =0, max_sum =0;
+  for(var i=0; i<n; i++){
+    sum += arr[i];
+  }
+  
+  var k=0;
+  for(var j=n;j<arr.length;j++,k++){
+    sum = sum + arr[j] - arr[k];
+    max_sum = sum > max_sum ? sum : max_sum;
+  }
+  
+  return max_sum;
+}
+
+console.log(slidingWindow([2,-1,4,5,8,9], 3))
