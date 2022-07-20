@@ -128,3 +128,26 @@ var sum =0, max_sum =0;
 }
 
 console.log(slidingWindow([2,-1,4,5,8,9], 3))
+
+// Find negatives in Set
+var findNegativesInSet = (arr, k)=>{
+	var i=0, j=0, list = [], output = [];
+	while(j<arr.length){
+     if(arr[j] < 0){
+      list.push(arr[j])
+     }
+     if(j-i+1 === k){
+       if(list.length === 0){
+        output.push(0);
+       }else if(arr[i] === list[0]){
+					output.push(list.shift());       
+       } else{
+       	output.push(list[0]);
+       }
+       i++;
+     }
+     j++;
+  }
+  return output;
+}
+console.log(findNegativesInSet([1, -1,-2, 3, -4, 3, -4, -5, 7, -8], 3)) //[-1, -1, -2, -4, -4, -4, -4, -5]
